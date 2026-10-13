@@ -1,0 +1,724 @@
+{
+  "description": "Mock exercise states, not tournament engine inputs. Expected answers are runner metadata, never passed into decide.",
+  "cases": [
+    {
+      "id": "free_check",
+      "observation": {
+        "street": "flop",
+        "hole_cards": [
+          {
+            "rank": 14,
+            "suit": "S"
+          },
+          {
+            "rank": 13,
+            "suit": "C"
+          }
+        ],
+        "board": [
+          {
+            "rank": 14,
+            "suit": "D"
+          },
+          {
+            "rank": 9,
+            "suit": "C"
+          },
+          {
+            "rank": 7,
+            "suit": "S"
+          }
+        ],
+        "pot": 60,
+        "to_call": 0,
+        "big_blind": 10,
+        "stack": 990,
+        "legal_actions": [
+          "check",
+          "bet"
+        ]
+      },
+      "expected": {
+        "starter": "check",
+        "baseline": "check",
+        "improved": "check"
+      }
+    },
+    {
+      "id": "cheap_call",
+      "observation": {
+        "street": "preflop",
+        "hole_cards": [
+          {
+            "rank": 14,
+            "suit": "S"
+          },
+          {
+            "rank": 13,
+            "suit": "C"
+          }
+        ],
+        "board": [],
+        "pot": 25,
+        "to_call": 10,
+        "big_blind": 10,
+        "stack": 990,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "call",
+        "improved": "call"
+      }
+    },
+    {
+      "id": "two_blind_boundary",
+      "observation": {
+        "street": "preflop",
+        "hole_cards": [
+          {
+            "rank": 14,
+            "suit": "S"
+          },
+          {
+            "rank": 13,
+            "suit": "C"
+          }
+        ],
+        "board": [],
+        "pot": 60,
+        "to_call": 20,
+        "big_blind": 10,
+        "stack": 990,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "call",
+        "improved": "call"
+      }
+    },
+    {
+      "id": "above_two_blinds",
+      "observation": {
+        "street": "preflop",
+        "hole_cards": [
+          {
+            "rank": 14,
+            "suit": "S"
+          },
+          {
+            "rank": 13,
+            "suit": "C"
+          }
+        ],
+        "board": [],
+        "pot": 60,
+        "to_call": 21,
+        "big_blind": 10,
+        "stack": 990,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "fold",
+        "improved": "fold"
+      }
+    },
+    {
+      "id": "pair_bigger_call",
+      "observation": {
+        "street": "preflop",
+        "hole_cards": [
+          {
+            "rank": 12,
+            "suit": "H"
+          },
+          {
+            "rank": 12,
+            "suit": "D"
+          }
+        ],
+        "board": [],
+        "pot": 60,
+        "to_call": 30,
+        "big_blind": 10,
+        "stack": 990,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "fold",
+        "improved": "call"
+      }
+    },
+    {
+      "id": "weak_cheap_call",
+      "observation": {
+        "street": "preflop",
+        "hole_cards": [
+          {
+            "rank": 7,
+            "suit": "D"
+          },
+          {
+            "rank": 2,
+            "suit": "C"
+          }
+        ],
+        "board": [],
+        "pot": 60,
+        "to_call": 10,
+        "big_blind": 10,
+        "stack": 990,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "call",
+        "improved": "call"
+      }
+    },
+    {
+      "id": "weak_two_blind_call",
+      "observation": {
+        "street": "preflop",
+        "hole_cards": [
+          {
+            "rank": 7,
+            "suit": "D"
+          },
+          {
+            "rank": 2,
+            "suit": "C"
+          }
+        ],
+        "board": [],
+        "pot": 60,
+        "to_call": 20,
+        "big_blind": 10,
+        "stack": 990,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "call",
+        "improved": "fold"
+      }
+    },
+    {
+      "id": "pair_after_flop",
+      "observation": {
+        "street": "flop",
+        "hole_cards": [
+          {
+            "rank": 12,
+            "suit": "H"
+          },
+          {
+            "rank": 12,
+            "suit": "D"
+          }
+        ],
+        "board": [
+          {
+            "rank": 14,
+            "suit": "D"
+          },
+          {
+            "rank": 9,
+            "suit": "C"
+          },
+          {
+            "rank": 7,
+            "suit": "S"
+          }
+        ],
+        "pot": 60,
+        "to_call": 30,
+        "big_blind": 10,
+        "stack": 990,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "fold",
+        "improved": "fold"
+      }
+    },
+    {
+      "id": "small_remaining_stack",
+      "observation": {
+        "street": "flop",
+        "hole_cards": [
+          {
+            "rank": 14,
+            "suit": "S"
+          },
+          {
+            "rank": 13,
+            "suit": "C"
+          }
+        ],
+        "board": [
+          {
+            "rank": 14,
+            "suit": "D"
+          },
+          {
+            "rank": 9,
+            "suit": "C"
+          },
+          {
+            "rank": 7,
+            "suit": "S"
+          }
+        ],
+        "pot": 60,
+        "to_call": 10,
+        "big_blind": 10,
+        "stack": 40,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "call",
+        "improved": "fold"
+      }
+    },
+    {
+      "id": "raising_unavailable",
+      "observation": {
+        "street": "preflop",
+        "hole_cards": [
+          {
+            "rank": 14,
+            "suit": "S"
+          },
+          {
+            "rank": 13,
+            "suit": "C"
+          }
+        ],
+        "board": [],
+        "pot": 60,
+        "to_call": 10,
+        "big_blind": 10,
+        "stack": 990,
+        "legal_actions": [
+          "fold",
+          "call"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "call",
+        "improved": "call"
+      }
+    },
+    {
+      "id": "large_call",
+      "observation": {
+        "street": "flop",
+        "hole_cards": [
+          {
+            "rank": 14,
+            "suit": "S"
+          },
+          {
+            "rank": 13,
+            "suit": "C"
+          }
+        ],
+        "board": [
+          {
+            "rank": 14,
+            "suit": "D"
+          },
+          {
+            "rank": 9,
+            "suit": "C"
+          },
+          {
+            "rank": 7,
+            "suit": "S"
+          }
+        ],
+        "pot": 250,
+        "to_call": 100,
+        "big_blind": 10,
+        "stack": 990,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "fold",
+        "improved": "fold"
+      }
+    },
+    {
+      "id": "turn_free_check",
+      "observation": {
+        "street": "turn",
+        "hole_cards": [
+          {
+            "rank": 14,
+            "suit": "S"
+          },
+          {
+            "rank": 13,
+            "suit": "C"
+          }
+        ],
+        "board": [
+          {
+            "rank": 14,
+            "suit": "D"
+          },
+          {
+            "rank": 9,
+            "suit": "C"
+          },
+          {
+            "rank": 7,
+            "suit": "S"
+          },
+          {
+            "rank": 2,
+            "suit": "H"
+          }
+        ],
+        "pot": 60,
+        "to_call": 0,
+        "big_blind": 10,
+        "stack": 990,
+        "legal_actions": [
+          "check",
+          "bet"
+        ]
+      },
+      "expected": {
+        "starter": "check",
+        "baseline": "check",
+        "improved": "check"
+      }
+    },
+    {
+      "id": "short_all_in_call",
+      "observation": {
+        "street": "river",
+        "hole_cards": [
+          {
+            "rank": 14,
+            "suit": "S"
+          },
+          {
+            "rank": 13,
+            "suit": "C"
+          }
+        ],
+        "board": [
+          {
+            "rank": 14,
+            "suit": "D"
+          },
+          {
+            "rank": 9,
+            "suit": "C"
+          },
+          {
+            "rank": 7,
+            "suit": "S"
+          },
+          {
+            "rank": 2,
+            "suit": "H"
+          },
+          {
+            "rank": 11,
+            "suit": "C"
+          }
+        ],
+        "pot": 60,
+        "to_call": 20,
+        "big_blind": 10,
+        "stack": 20,
+        "legal_actions": [
+          "fold",
+          "call"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "call",
+        "improved": "fold"
+      }
+    },
+    {
+      "id": "weak_cards_after_flop",
+      "observation": {
+        "street": "flop",
+        "hole_cards": [
+          {
+            "rank": 7,
+            "suit": "D"
+          },
+          {
+            "rank": 2,
+            "suit": "C"
+          }
+        ],
+        "board": [
+          {
+            "rank": 14,
+            "suit": "D"
+          },
+          {
+            "rank": 9,
+            "suit": "C"
+          },
+          {
+            "rank": 7,
+            "suit": "S"
+          }
+        ],
+        "pot": 60,
+        "to_call": 20,
+        "big_blind": 10,
+        "stack": 990,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "call",
+        "improved": "call"
+      }
+    },
+    {
+      "id": "pair_above_four_blinds",
+      "observation": {
+        "street": "preflop",
+        "hole_cards": [
+          {
+            "rank": 12,
+            "suit": "H"
+          },
+          {
+            "rank": 12,
+            "suit": "D"
+          }
+        ],
+        "board": [],
+        "pot": 60,
+        "to_call": 41,
+        "big_blind": 10,
+        "stack": 990,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "fold",
+        "improved": "fold"
+      }
+    },
+    {
+      "id": "pair_four_blind_boundary",
+      "observation": {
+        "street": "preflop",
+        "hole_cards": [
+          {
+            "rank": 12,
+            "suit": "H"
+          },
+          {
+            "rank": 12,
+            "suit": "D"
+          }
+        ],
+        "board": [],
+        "pot": 60,
+        "to_call": 40,
+        "big_blind": 10,
+        "stack": 200,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "fold",
+        "improved": "call"
+      }
+    },
+    {
+      "id": "pair_stack_boundary",
+      "observation": {
+        "street": "preflop",
+        "hole_cards": [
+          {
+            "rank": 12,
+            "suit": "H"
+          },
+          {
+            "rank": 12,
+            "suit": "D"
+          }
+        ],
+        "board": [],
+        "pot": 60,
+        "to_call": 20,
+        "big_blind": 10,
+        "stack": 100,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "call",
+        "improved": "call"
+      }
+    },
+    {
+      "id": "pair_above_stack_limit",
+      "observation": {
+        "street": "preflop",
+        "hole_cards": [
+          {
+            "rank": 12,
+            "suit": "H"
+          },
+          {
+            "rank": 12,
+            "suit": "D"
+          }
+        ],
+        "board": [],
+        "pot": 60,
+        "to_call": 21,
+        "big_blind": 10,
+        "stack": 100,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "fold",
+        "improved": "fold"
+      }
+    },
+    {
+      "id": "different_big_blind",
+      "observation": {
+        "street": "preflop",
+        "hole_cards": [
+          {
+            "rank": 14,
+            "suit": "S"
+          },
+          {
+            "rank": 13,
+            "suit": "C"
+          }
+        ],
+        "board": [],
+        "pot": 60,
+        "to_call": 40,
+        "big_blind": 20,
+        "stack": 980,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "call",
+        "improved": "call"
+      }
+    },
+    {
+      "id": "above_different_big_blind",
+      "observation": {
+        "street": "preflop",
+        "hole_cards": [
+          {
+            "rank": 14,
+            "suit": "S"
+          },
+          {
+            "rank": 13,
+            "suit": "C"
+          }
+        ],
+        "board": [],
+        "pot": 60,
+        "to_call": 41,
+        "big_blind": 20,
+        "stack": 980,
+        "legal_actions": [
+          "fold",
+          "call",
+          "raise"
+        ]
+      },
+      "expected": {
+        "starter": "fold",
+        "baseline": "fold",
+        "improved": "fold"
+      }
+    }
+  ]
+}
